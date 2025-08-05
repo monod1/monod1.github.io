@@ -26,7 +26,7 @@
       width: 100%;
     }
 
-    /* Desktop ASCII logo */
+    /* Desktop logo - original, no wrap */
     .ascii-logo-desktop {
       font-family: monospace;
       white-space: pre;
@@ -35,25 +35,26 @@
       padding: 1rem 0;
       margin-bottom: 2rem;
       max-width: 100vw;
-      font-size: 0.87rem; /* your original desktop size */
+      font-size: 0.87rem;
       overflow-x: auto;
       box-sizing: border-box;
       display: block;
     }
 
-    /* Mobile ASCII logo - same content but independent and unscaled */
+    /* Mobile logo - wrap enabled to prevent horizontal scroll */
     .ascii-logo-mobile {
       font-family: monospace;
-      white-space: pre;
+      white-space: pre-wrap; /* allow wrapping on mobile */
+      word-break: break-word; /* break long lines */
       color: #fff;
       background-color: #000;
       padding: 1rem 0;
       margin-bottom: 2rem;
-      max-width: 100vw;
-      font-size: 0.87rem; /* exact same font size, no scaling */
-      overflow-x: auto;
+      max-width: 90vw;
+      font-size: 0.87rem;
+      overflow-x: hidden;
       box-sizing: border-box;
-      display: none; /* hidden by default */
+      display: none;
     }
 
     .concert-info {
@@ -91,12 +92,11 @@
 
     /* Media queries */
     @media (max-width: 600px) {
-      /* Hide desktop logo, show mobile logo exactly as original */
       .ascii-logo-desktop {
-        display: none;
+        display: none; /* hide desktop logo on mobile */
       }
       .ascii-logo-mobile {
-        display: block;
+        display: block; /* show mobile logo on mobile */
       }
       .concert-info {
         font-size: 1rem;
@@ -113,7 +113,7 @@
 <body>
   <div class="container">
 
-    <!-- Desktop version -->
+    <!-- Desktop logo -->
     <pre class="ascii-logo-desktop">
 • ▌ ▄ ·.        ▐ ▄       ·▄▄▄▄  ▪  • ▌ ▄ ·.  ▄▄▄·▄▄▌  ▄▄▄ .·▄▄▄▄  
 ·██ ▐███▪▪     •█▌▐█▪     ██▪ ██ ██ ·██ ▐███▪▐█ ▄███•  ▀▄.▀·██▪ ██ 
@@ -122,7 +122,7 @@
 ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀█▄▀▪▀▀▀▀▀• ▀▀▀▀▀  █▪▀▀▀.▀   .▀▀▀  ▀▀▀ ▀▀▀▀▀• 
     </pre>
 
-    <!-- Mobile version -->
+    <!-- Mobile logo (wrapped) -->
     <pre class="ascii-logo-mobile">
 • ▌ ▄ ·.        ▐ ▄       ·▄▄▄▄  ▪  • ▌ ▄ ·.  ▄▄▄·▄▄▌  ▄▄▄ .·▄▄▄▄  
 ·██ ▐███▪▪     •█▌▐█▪     ██▪ ██ ██ ·██ ▐███▪▐█ ▄███•  ▀▄.▀·██▪ ██ 
