@@ -1,21 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Site</title>
-  </head>
-  <body>
-    <h1>Welcome to 
-<pre>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Site</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000; /* black background */
+      color: #fff;            /* white text */
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
+    .container {
+      padding: 2rem;
+    }
+
+    .ascii-art {
+      font-family: monospace;
+      white-space: pre;
+      color: #fff;
+      background-color: #000;
+      padding: 1rem;
+      overflow-x: auto;
+      margin-bottom: 2rem;
+    }
+
+    .concert-info {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .ascii-art {
+        font-size: 0.75rem; /* Slightly smaller on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to</h1>
+
+    <pre class="ascii-art">
 • ▌ ▄ ·.        ▐ ▄       ·▄▄▄▄  ▪  • ▌ ▄ ·.  ▄▄▄·▄▄▌  ▄▄▄ .·▄▄▄▄  
 ·██ ▐███▪▪     •█▌▐█▪     ██▪ ██ ██ ·██ ▐███▪▐█ ▄███•  ▀▄.▀·██▪ ██ 
 ▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌ ▄█▀▄ ▐█· ▐█▌▐█·▐█ ▌▐▌▐█· ██▀·██▪  ▐▀▀▪▄▐█· ▐█▌
 ██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▌.▐▌██. ██ ▐█▌██ ██▌▐█▌▐█▪·•▐█▌▐▌▐█▄▄▌██. ██ 
 ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀█▄▀▪▀▀▀▀▀• ▀▀▀▀▀  █▪▀▀▀.▀   .▀▀▀  ▀▀▀ ▀▀▀▀▀• 
-                                                
-</pre>
+    </pre>
 
-</h1>
-    <p>This is just a placeholder!</p>
-  </body>
+    <div class="concert-info">
+      Propers concerts:<br />
+      19 de Setembre - Sala Taro
+    </div>
+  </div>
+</body>
 </html>
