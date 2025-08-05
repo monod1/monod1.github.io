@@ -9,8 +9,8 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: #000; /* black background */
-      color: #fff;            /* white text */
+      background-color: #000 !important; /* Force black background */
+      color: #fff !important;            /* Force white text */
       font-family: Arial, sans-serif;
       display: flex;
       align-items: center;
@@ -20,6 +20,11 @@
 
     .container {
       padding: 2rem;
+      max-width: 90%;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
     }
 
     .ascii-art {
@@ -34,12 +39,24 @@
 
     .concert-info {
       font-size: 1.2rem;
-      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .video-link img {
+      width: 100%;
+      max-width: 560px;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .video-link img:hover {
+      transform: scale(1.03);
     }
 
     @media (max-width: 600px) {
       .ascii-art {
-        font-size: 0.75rem; /* Slightly smaller on mobile */
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -59,6 +76,15 @@
     <div class="concert-info">
       Propers concerts:<br />
       19 de Setembre - Sala Taro
+    </div>
+
+    <div class="video-link">
+      <a href="https://www.youtube.com/watch?v=YdTHhdXhiC8" target="_blank">
+        <img 
+          src="https://img.youtube.com/vi/YdTHhdXhiC8/hqdefault.jpg" 
+          alt="Watch on YouTube"
+        />
+      </a>
     </div>
   </div>
 </body>
