@@ -97,6 +97,7 @@
 <body>
   <div class="container">
 
+    <!-- ASCII LOGO -->
     <pre class="ascii-logo">
 • ▌ ▄ ·.        ▐ ▄       ·▄▄▄▄  ▪  • ▌ ▄ ·.  ▄▄▄·▄▄▌  ▄▄▄ .·▄▄▄▄  
 ·██ ▐███▪▪     •█▌▐█▪     ██▪ ██ ██ ·██ ▐███▪▐█ ▄███•  ▀▄.▀·██▪ ██ 
@@ -105,11 +106,13 @@
 ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀█▄▀▪▀▀▀▀▀• ▀▀▀▀▀  █▪▀▀▀.▀   .▀▀▀  ▀▀▀ ▀▀▀▀▀• 
     </pre>
 
+    <!-- CONCERT INFO -->
     <div class="concert-info">
       <br />
       19 de Setembre - Sala Taro
     </div>
 
+    <!-- YOUTUBE ASCII THUMBNAIL -->
     <a href="https://www.youtube.com/watch?v=YdTHhdXhiC8" target="_blank" rel="noopener noreferrer" class="video-link" aria-label="Watch video on YouTube">
 <pre>
       .            . .    .               
@@ -160,22 +163,27 @@
       >
         Entrar
       </button>
-      <p id="password-error" style="color: red; display: none; margin-top: 0.5rem;">
-        Contrasenya incorrecta.
-      </p>
+      <p id="password-message" style="color: red; display: none; margin-top: 0.5rem;"></p>
     </div>
 
-    <!-- HIDDEN FILE LINKS -->
-    <div id="hidden-files" style="display: none; margin-top: 2rem;">
-      <h3>Arxius disponibles:</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li><a href="files/audio1.wav" download>🔊 audio1.wav</a></li>
-        <li><a href="files/audio2.wav" download>🔊 audio2.wav</a></li>
-        <li><a href="files/audio3.wav" download>🔊 audio3.wav</a></li>
-      </ul>
+    <!-- OPTIONAL DOWNLOAD LINK -->
+    <div id="download-link" style="display: none; margin-top: 1rem;">
+      <a href="CCO-Monodimpled EP Secret.zip" target="_blank" style="color: #0f0; font-weight: bold;">
+        Fes clic aquí si no es descarrega automàticament
+      </a>
     </div>
 
-    <script>
-      function checkPassword() {
-        const input = document.getElementById("password-input").value;
-       
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const message = document.getElementById("password-message");
+      const downloadLink = document.getElementById("download-link");
+      const correctPassword = "monodimpled190925";
+      const filePath = "CCO-Monodimpled EP Secret.zip";
+
+      if (input === correctPassword) {
+        message.style.display = "block";
+        message.style.color = "lime";
