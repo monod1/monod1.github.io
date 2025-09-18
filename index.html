@@ -148,7 +148,7 @@
 </pre>
     </a>
 
-    <!-- PASSWORD SECTION -->
+        <!-- PASSWORD SECTION -->
     <div id="password-section" style="margin-top: 2rem;">
       <label for="password-input">Contrasenya:</label><br />
       <input
@@ -172,13 +172,12 @@
         Fes clic aquí si no es descarrega automàticament
       </a>
     </div>
-
   </div>
 
   <!-- SCRIPT -->
   <script>
     function checkPassword() {
-      const input = document.getElementById("password-input").value;
+      const input = document.getElementById("password-input").value.trim();
       const message = document.getElementById("password-message");
       const downloadLink = document.getElementById("download-link");
       const correctPassword = "monodimpled190925";
@@ -187,3 +186,26 @@
       if (input === correctPassword) {
         message.style.display = "block";
         message.style.color = "lime";
+        message.innerText = "Descarregant...";
+
+        downloadLink.style.display = "block";
+
+        // Attempt auto-download
+        setTimeout(() => {
+          const link = document.createElement("a");
+          link.href = filePath;
+          link.setAttribute("download", filePath);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, 1000);
+      } else {
+        message.style.display = "block";
+        message.style.color = "red";
+        message.innerText = "Contrasenya incorrecta.";
+        downloadLink.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
