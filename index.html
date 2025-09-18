@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Monodimpled</title>
 
-  <!-- Favicon generated as a tiny ASCII art snippet -->
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAIElEQVR42mNkYGBgYGBg+M8ABf8dDYYDS4wPqBTAADk5QX0KnE9HwAAAABJRU5ErkJggg==" />
 
   <style>
@@ -30,7 +29,6 @@
       width: 100%;
     }
 
-    /* Desktop logo only */
     .ascii-logo {
       font-family: monospace;
       white-space: pre;
@@ -46,7 +44,6 @@
     }
 
     @media (max-width: 600px) {
-      /* Hide logo on mobile */
       .ascii-logo {
         display: none;
       }
@@ -59,7 +56,6 @@
       color: #fff;
     }
 
-    /* Styling the clickable ASCII thumbnail */
     .video-link {
       display: inline-block;
       cursor: pointer;
@@ -67,8 +63,8 @@
       max-width: 320px;
       max-height: 320px;
       overflow: auto;
-      line-height: 7px; /* tighter line spacing */
-      font-size: 7px;    /* bigger font size */
+      line-height: 7px;
+      font-size: 7px;
       font-family: monospace;
       white-space: pre;
       user-select: none;
@@ -76,7 +72,7 @@
       color: #fff;
       text-decoration: none;
       margin: 0 auto;
-      border: none; /* removed frame */
+      border: none;
       box-sizing: border-box;
       transition: transform 0.2s ease;
     }
@@ -101,7 +97,6 @@
 <body>
   <div class="container">
 
-    <!-- Desktop ASCII logo only -->
     <pre class="ascii-logo">
 • ▌ ▄ ·.        ▐ ▄       ·▄▄▄▄  ▪  • ▌ ▄ ·.  ▄▄▄·▄▄▌  ▄▄▄ .·▄▄▄▄  
 ·██ ▐███▪▪     •█▌▐█▪     ██▪ ██ ██ ·██ ▐███▪▐█ ▄███•  ▀▄.▀·██▪ ██ 
@@ -150,6 +145,37 @@
 </pre>
     </a>
 
-  </div>
-</body>
-</html>
+    <!-- PASSWORD SECTION -->
+    <div id="password-section" style="margin-top: 2rem;">
+      <label for="password-input">Contrasenya:</label><br />
+      <input
+        type="password"
+        id="password-input"
+        placeholder="Entra la contrasenya"
+        style="padding: 0.5rem; margin-top: 0.5rem; font-size: 1rem;"
+      />
+      <button
+        onclick="checkPassword()"
+        style="margin-left: 0.5rem; padding: 0.5rem; font-size: 1rem; cursor: pointer;"
+      >
+        Entrar
+      </button>
+      <p id="password-error" style="color: red; display: none; margin-top: 0.5rem;">
+        Contrasenya incorrecta.
+      </p>
+    </div>
+
+    <!-- HIDDEN FILE LINKS -->
+    <div id="hidden-files" style="display: none; margin-top: 2rem;">
+      <h3>Arxius disponibles:</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="files/audio1.wav" download>🔊 audio1.wav</a></li>
+        <li><a href="files/audio2.wav" download>🔊 audio2.wav</a></li>
+        <li><a href="files/audio3.wav" download>🔊 audio3.wav</a></li>
+      </ul>
+    </div>
+
+    <script>
+      function checkPassword() {
+        const input = document.getElementById("password-input").value;
+       
