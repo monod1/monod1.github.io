@@ -1,33 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width,
-                 height=device-height,
-                 initial-scale=1,
-                 minimum-scale=1,
-                 maximum-scale=5,
-                 user-scalable=yes">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-    }
-  </style>
-</head>
-<body>
-
-<script language="decker">
-
+<meta charset="UTF-8"><body><script language="decker">
 {deck}
 version:1
 card:2
 size:[512,342]
-locked:0
+locked:1
 name:"Monodimpled"
 author:"Monodimpled"
 
@@ -330,9 +306,9 @@ image:"%%IMG2ABYAGAABAQUACQEGAAEBASAFAQMABgEBIAUBAiABAQMgAQEBIAEBAQAGAQEgAQEDIAE
 <canvas id='render' style='display:none'></canvas>
 <canvas id='lrender' style='display:none'></canvas>
 <canvas id='rrender' style='display:none'></canvas>
-<canvas ='0' height='0' id='ltools'></canvas>
+<canvas width='0' height='0' id='ltools'></canvas>
 <canvas id='display'></canvas>
-<canvas ='0' height='0' id='rtools'></canvas>
+<canvas width='0' height='0' id='rtools'></canvas>
 <style>
 html,body{height:100%;}
 body{background:black;margin:0;display:flex;align-items:center;justify-content:space-between;-webkit-user-select:none;user-select:none;}
@@ -1695,30 +1671,30 @@ layout_plaintext=(text,font,align,mx)=>{
  let y=0;for(let i=0,line=0;i<layout.length;i++,line++){
   let a=i;while(i<(layout.length-1)&&(layout[i+1].pos.y==line))i++          // find bounds of line
   let h=0;for(let z=a;z<=i;z++)h=max(h,layout[z].pos.h)                     // find height of line
-  let w=(a&&a==i)?0:(layout[i].pos.x+layout[i].pos.w)                       // find  of line
+  let w=(a&&a==i)?0:(layout[i].pos.x+layout[i].pos.w)                       // find width of line
   let x=align==ALIGN.center?0|((mx.x-w)/2): align==ALIGN.right?(mx.x-w): 0  // justify
   lines.push({pos:rect(x,y,w,h),range:rect(a,i)})
   for(let z=a;z<=i;z++){const g=layout[z].pos;g.y=y+0|((h-g.h)/2);g.x+=x;}if(i<layout.length-1)y+=h
  }return {size:rect(mx.x,y+fh),layout,lines}
 }
-layout_richtext=(deck,table,font,align,)=>{
+layout_richtext=(deck,table,font,align,width)=>{
  const layout=[],lines=[],cursor=rect(0,0), lnl=_=>(cursor.x=0,cursor.y+=1), ws=x=>x=='\n'||x==' '
  const texts=tab_get(table,'text'), fonts=tab_get(table,'font'), args=tab_get(table,'arg'), pats=tab_get(table,'pat')
  for(let chunk=0;chunk<texts.length;chunk++){
   const f=dget(deck.fonts,fonts[chunk])||font, fh=font_h(f), fs=font_sw(f)
   if(image_is(args[chunk])){
-   const size=args[chunk].size;if(cursor.x+size.x>=&&cursor.x>0)lnl()
+   const size=args[chunk].size;if(cursor.x+size.x>=width&&cursor.x>0)lnl()
    layout.push({pos:rpair(cursor,size),line:cursor.y,char:'i',font:f,arg:args[chunk],pat:ln(pats[chunk])})
    cursor.x+=size.x;continue
   }
   const t=ls(texts[chunk]);for(let z=0;z<t.length;z++){
    let a=z, w=t[z]=='\n'?0:(font_gw(f,t[z])+fs)
    if(!ws(t[z]))while(z+1<t.length&&!ws(t[z+1]))w+=font_gw(f,t[++z])+fs
-   if(cursor.x+w>=&&cursor.x>0)lnl()
+   if(cursor.x+w>=width&&cursor.x>0)lnl()
    for(let i=a;i<=z;i++){
     const c=t[i], size=rect(c=='\n'?0:font_gw(f,c)+fs,fh)
     if(c==' '&&cursor.x==0&&layout.length>0&&!ws(last(layout).char))size.x=0
-    if(cursor.x+size.x>=)lnl()
+    if(cursor.x+size.x>=width)lnl()
     layout.push({pos:rpair(cursor,size),line:cursor.y,char:c,font:f,arg:args[chunk],pat:ln(pats[chunk])})
     if(c=='\n'){lnl()}else{cursor.x+=size.x}
    }
@@ -7488,9 +7464,4 @@ q('body').ondrop=e=>{
 pushstate(lmenv()),load_deck(deck_read(q('script[language="decker"]').innerText))
 const tag=decodeURI(document.URL.split('#')[1]||'');if(tag.length)iwrite(deck,lms('card'),lms(tag))
 resize(),requestAnimationFrame(loop)
-</script>
-</body>
-</html>
-
-
-  
+</script></body>
