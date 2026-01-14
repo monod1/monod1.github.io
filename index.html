@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <!-- IMPORTANT: real mobile scaling & zoom -->
   <meta name="viewport"
         content="width=device-width,
                  height=device-height,
@@ -11,9 +9,7 @@
                  minimum-scale=1,
                  maximum-scale=5,
                  user-scalable=yes">
-
   <style>
-    /* Ensure the deck fills the screen */
     html, body {
       margin: 0;
       padding: 0;
@@ -26,7 +22,8 @@
 </head>
 <body>
 
-<meta charset="UTF-8"><body><script language="decker">
+<script language="decker">
+
 {deck}
 version:1
 card:2
@@ -7493,4 +7490,9 @@ q('body').ondrop=e=>{
 pushstate(lmenv()),load_deck(deck_read(q('script[language="decker"]').innerText))
 const tag=decodeURI(document.URL.split('#')[1]||'');if(tag.length)iwrite(deck,lms('card'),lms(tag))
 resize(),requestAnimationFrame(loop)
-</script></body>
+</script>
+</body>
+</html>
+
+
+  
