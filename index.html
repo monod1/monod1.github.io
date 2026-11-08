@@ -7629,7 +7629,7 @@ loop=stamp=>{
 }
 resize=_=>{
  const b=q('body'), screen=rect(b.clientWidth,b.clientHeight), fs=min(screen.x/fb.size.x,screen.y/fb.size.y)
- zoom=fs<1?fs:max(1,is_fullscreen()?fs:(0|fs))
+ zoom=(fs<1||(window.matchMedia&&matchMedia('(pointer:coarse)').matches)||navigator.maxTouchPoints>0)?fs:max(1,is_fullscreen()?fs:(0|fs))
  tzoom=0|min((screen.x-(zoom*fb.size.x))/(2*toolsize.x),screen.y/toolsize.y)
  const tz=tzoom*toolbars_enable
  const c =q('#display');c .width=fb.size .x*zoom,c.height =fb.size .y*zoom
