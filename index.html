@@ -1,10 +1,10 @@
-<meta charset="UTF-8"><body><script language="decker">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta charset="UTF-8"><body><script language="decker">
 {deck}
 version:1
 card:3
 size:[512,342]
-locked:1
 name:"Monodimpled"
+locked:1
 author:"Monodimpled"
 
 {fonts}
@@ -369,7 +369,7 @@ image:"%%IMG3ABYAGAZAQGA4BBiPRyJRCGo2l0imEzSkVgPUKJNopXqxAS34C74qz8ru0zttT9FWtDy
 <canvas id='display'></canvas>
 <canvas width='0' height='0' id='rtools'></canvas>
 <style>
-html,body{height:100%;}
+html,body{height:100%;height:100dvh;}
 body{background:black;margin:0;display:flex;align-items:center;justify-content:space-between;-webkit-user-select:none;user-select:none;}
 body{touch-action:none;overflow:hidden;}
 </style>
@@ -7629,7 +7629,7 @@ loop=stamp=>{
 }
 resize=_=>{
  const b=q('body'), screen=rect(b.clientWidth,b.clientHeight), fs=min(screen.x/fb.size.x,screen.y/fb.size.y)
- zoom=max(1,is_fullscreen()?fs:(0|fs))
+ zoom=fs<1?fs:max(1,is_fullscreen()?fs:(0|fs))
  tzoom=0|min((screen.x-(zoom*fb.size.x))/(2*toolsize.x),screen.y/toolsize.y)
  const tz=tzoom*toolbars_enable
  const c =q('#display');c .width=fb.size .x*zoom,c.height =fb.size .y*zoom
